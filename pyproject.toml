@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A generic, configurable, leakage-safe detection platform (clean-room reference)."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "Apache-2.0"
 authors = [{ name = "Andrew Cairns" }]
 dependencies = []  # the core platform is stdlib-only by design
 
