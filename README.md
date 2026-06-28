@@ -1,5 +1,8 @@
 # Detection Platform
 
+[![CI](https://github.com/SaintlyDrew/detection-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/SaintlyDrew/detection-platform/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 A generic, configurable, **leakage-safe** detection platform — a clean-room reference
 implementation of the signal-to-decision pattern behind insider-risk, fraud, and AML
 surveillance systems. Pure Python, locally runnable, test-led.
