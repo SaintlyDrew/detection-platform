@@ -45,6 +45,10 @@ def run_pipeline(
     as_of: datetime,
     detectors: Sequence[Detector] = (),
 ) -> PipelineResult:
+    # Point-in-time: an ingested signal dated after the run anchor is not yet
+    # observable. Filtering here is what makes a walk-forward backtest honest.
+    signals = [s for s in signals if s.as_of <= as_of]
+
     # subject universe: everyone an ingested signal mentions, plus everyone the
     # provider knows about as_of (so an in-platform detector can surface a subject who
     # had no upstream signal). Point-in-time: future-only subjects are excluded.

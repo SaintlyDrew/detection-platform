@@ -1,0 +1,9 @@
+{
+  "_comment": "Ground truth for backtesting: which subjects were confirmed true positives after investigation.",
+  "E-101": true,
+  "E-103": true,
+  "E-106": true,
+  "E-102": false,
+  "E-104": false,
+  "E-105": false
+}

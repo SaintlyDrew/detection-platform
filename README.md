@@ -30,7 +30,7 @@ a rewrite.
 
 Everything crosses a seam as a **typed contract** ([`core/contracts.py`](detection_platform/core/contracts.py)) — read that file first; the rest of the platform is implementations of those interfaces.
 
-## Two design choices worth your attention
+## Three design choices worth your attention
 
 1. **Point-in-time safety (no leakage).** Every record carries an `as_of` timestamp; a
    feature computed `as_of = T` can never depend on data observed after `T`. This is the
@@ -40,6 +40,11 @@ Everything crosses a seam as a **typed contract** ([`core/contracts.py`](detecti
 2. **Models suggest, rules judge.** A model is not privileged — it is just a `Detector` that
    emits advisory signals, and it **cannot escalate a subject on its own**. Plugging in a
    real ML model means writing one adapter; the architecture does not change.
+
+3. **Validate before you ship.** The `sandbox` replays labeled history through a candidate
+   config and measures detection quality — precision@K, lift, a leakage-free walk-forward,
+   and an A/B that catches whether a rule/model change *helps or hurts* before it reaches
+   production. A detector is a hypothesis; the sandbox is where it earns deployment.
 
 ## Production capabilities → generic stand-ins
 
@@ -71,7 +76,10 @@ is the contract, the implementation is swappable.
 python -m examples.insider_risk.run
 python -m examples.payments_fraud.run     # same platform, different config + a model
 
-# run the test suite (leakage-invariant, golden-trace, advisory-floor, consolidation)
+# backtest a config against labeled history (precision@K, walk-forward, A/B)
+python -m examples.insider_risk.backtest
+
+# run the test suite (leakage-invariant, golden-trace, advisory-floor, genericity, sandbox)
 pip install -e ".[dev]"   # pytest + dev extras
 python -m pytest -q
 ```
@@ -85,8 +93,8 @@ The demo prints a run report and the surfaced case queue, and writes cases to
 - [x] Phase 0 — typed contracts + component skeleton + this README
 - [x] Phase 1 — runnable end-to-end spine on the insider domain + golden-trace & leakage tests
 - [x] Phase 2 — pluggable `ModelDetector` seam + a second runnable domain (payments) + genericity test
-- [ ] Phase 3 — sandbox/backtest harness (precision@K, lift, walk-forward) + drift check
-- [ ] Phase 4 — docs (architecture / PRD / test strategy) + quickstart polish
+- [x] Phase 3 — sandbox/backtest harness (precision@K, lift, leakage-free walk-forward, A/B comparison)
+- [ ] Phase 4 — docs (architecture / PRD / test strategy) + drift check + quickstart polish
 
 ## License
 
