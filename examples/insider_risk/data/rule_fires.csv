@@ -1,0 +1,3 @@
+subject_id,rule_id,as_of,reason
+E-101,R-DEPARTING-EXFIL,2026-02-25T09:00:00,departing employee accessing restricted records
+E-104,R-PRIV-ESCALATION,2026-02-19T11:00:00,access outside role boundary

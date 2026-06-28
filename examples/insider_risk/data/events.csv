@@ -1,0 +1,13 @@
+subject_id,event_type,ts,magnitude
+E-101,after_hours_access,2026-02-03T22:30:00,1
+E-101,after_hours_access,2026-02-05T23:10:00,1
+E-101,after_hours_access,2026-02-09T21:50:00,1
+E-101,after_hours_access,2026-02-12T22:05:00,1
+E-101,after_hours_access,2026-02-18T23:40:00,1
+E-101,after_hours_access,2026-02-23T22:15:00,1
+E-101,after_hours_access,2026-04-15T22:00:00,1
+E-102,after_hours_access,2026-02-10T21:20:00,1
+E-104,after_hours_access,2026-02-14T22:45:00,1
+E-103,export,2026-02-20T13:00:00,450
+E-106,export,2026-02-21T17:30:00,600
+E-104,export,2026-02-22T10:15:00,380

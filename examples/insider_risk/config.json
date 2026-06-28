@@ -1,0 +1,35 @@
+{
+  "domain": "insider_risk",
+  "description": "Insider-risk instantiation of the detection platform. Domain lives in config; the platform code is unchanged.",
+  "signal_points": {
+    "rule": 35,
+    "ingested": 30,
+    "model": 28
+  },
+  "feature_rules": [
+    {
+      "id": "R-AHRS-Z",
+      "feature": "peer_z_after_hours",
+      "op": ">=",
+      "threshold": 2.0,
+      "weight": 30,
+      "reason": "after-hours access >= 2 sigma above peer baseline"
+    },
+    {
+      "id": "R-EXPORT",
+      "feature": "export_volume_30d",
+      "op": ">=",
+      "threshold": 400,
+      "weight": 30,
+      "reason": "bulk export >= 400 records over the trailing 30 days"
+    }
+  ],
+  "tiers": [
+    { "tier": "critical", "min": 70 },
+    { "tier": "high", "min": 45 },
+    { "tier": "medium", "min": 20 },
+    { "tier": "low", "min": 0 }
+  ],
+  "capacity": 4,
+  "advisory_cap": "medium"
+}

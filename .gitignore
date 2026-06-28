@@ -17,3 +17,4 @@ dist/
 *.sqlite
 *.db
 .DS_Store
+examples/**/out/

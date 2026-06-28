@@ -63,10 +63,25 @@ is the contract, the implementation is swappable.
   the *same spine* runs unchanged on a different domain.
 - **`examples/aml/`** — a thin placeholder showing the extension point.
 
+## Quickstart
+
+```bash
+# run the insider-risk domain end to end (stdlib only — no install needed)
+python -m examples.insider_risk.run
+
+# run the test suite (leakage-invariant, golden-trace, advisory-floor, consolidation)
+pip install pytest        # dev dependency
+python -m pytest -q
+```
+
+The demo prints a run report and the surfaced case queue, and writes cases to
+`examples/insider_risk/out/` (JSONL + SQLite). A new domain is a new folder under
+`examples/` with its own config + feature provider — the platform code is untouched.
+
 ## Roadmap
 
 - [x] Phase 0 — typed contracts + component skeleton + this README
-- [ ] Phase 1 — runnable end-to-end spine on the insider domain + golden-trace & leakage tests
+- [x] Phase 1 — runnable end-to-end spine on the insider domain + golden-trace & leakage tests
 - [ ] Phase 2 — pluggable models seam + the payments config + genericity test
 - [ ] Phase 3 — sandbox/backtest harness (precision@K, lift, walk-forward) + drift check
 - [ ] Phase 4 — docs (architecture / PRD / test strategy) + quickstart polish
