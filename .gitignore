@@ -18,3 +18,13 @@ dist/
 *.db
 .DS_Store
 examples/**/out/
+
+# Secrets — never commit (defensive; the project itself uses none)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.*

@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+# Least privilege: this workflow only reads the repo to run tests.
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
